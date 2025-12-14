@@ -2,6 +2,9 @@
 
 A scalable web application for NGOs to track and report their monthly impact metrics. The system supports individual report submissions, bulk CSV uploads with background processing, and an admin dashboard for viewing aggregated data.
 
+<img width="1913" height="1035" alt="image" src="https://github.com/user-attachments/assets/a80025fa-ae3e-474f-8328-9303982c018e" />
+
+
 ## Tech Stack
 
 ### Backend
