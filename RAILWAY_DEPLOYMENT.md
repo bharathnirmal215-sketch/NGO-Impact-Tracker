@@ -2,6 +2,8 @@
 
 Railway is one of the easiest platforms to deploy Django + Next.js applications. This guide will walk you through deploying your NGO Impact Tracker on Railway.
 
+> **📖 For the most detailed step-by-step guide, see [RAILWAY_STEP_BY_STEP.md](./RAILWAY_STEP_BY_STEP.md)**
+
 ## Why Railway?
 
 - ✅ **Easier than Render** - Automatic detection and configuration
