@@ -285,34 +285,43 @@ CSV uploads are processed asynchronously using Celery. This allows:
 
 ## Deployment
 
-### Backend (Django)
+### Quick Deployment Guide
 
-**Render / Railway / Heroku:**
-1. Set environment variables
-2. Run migrations: `python manage.py migrate`
-3. Start Celery worker separately
-4. Configure Redis addon
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed deployment instructions.
 
-**Vercel / Netlify:**
-- Not recommended for Django (use Render/Railway instead)
+### Recommended Setup
 
-### Frontend (Next.js)
+**Backend (Django)**: Deploy on **Render** or **Railway**
+- Free tier available
+- PostgreSQL and Redis support
+- Easy environment variable configuration
 
-**Vercel (Recommended):**
-```bash
-cd frontend
-vercel
-```
+**Frontend (Next.js)**: Deploy on **Vercel**
+- Free tier available
+- Optimized for Next.js
+- Automatic deployments from GitHub
 
-**Netlify:**
-```bash
-cd frontend
-npm run build
-# Deploy the .next folder
-```
+### Quick Deploy Steps
 
-**Update API URL:**
-Set `NEXT_PUBLIC_API_URL` environment variable to your backend URL.
+1. **Deploy Backend on Render**:
+   - Sign up at https://render.com
+   - Connect GitHub repository
+   - Create Web Service from `backend` directory
+   - Add PostgreSQL and Redis databases
+   - Set environment variables
+   - Deploy!
+
+2. **Deploy Frontend on Vercel**:
+   - Sign up at https://vercel.com
+   - Import GitHub repository
+   - Set root directory to `frontend`
+   - Add `NEXT_PUBLIC_API_URL` environment variable
+   - Deploy!
+
+3. **Update CORS**:
+   - Add your Vercel frontend URL to backend CORS settings
+
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for complete instructions.
 
 ## Development Notes
 

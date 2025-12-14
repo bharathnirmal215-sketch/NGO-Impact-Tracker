@@ -1,0 +1,40 @@
+services:
+  - type: web
+    name: ngo-tracker-backend
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: pip install -r requirements.txt && python manage.py migrate
+    startCommand: gunicorn ngo_tracker.wsgi:application --bind 0.0.0.0:$PORT
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
+      - key: USE_SQLITE
+        value: "False"
+      - key: DB_NAME
+        fromDatabase:
+          name: ngo-tracker-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: ngo-tracker-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: ngo-tracker-db
+          property: password
+      - key: DB_HOST
+        fromDatabase:
+          name: ngo-tracker-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: ngo-tracker-db
+          property: port
+
+databases:
+  - name: ngo-tracker-db
+    plan: free
+
