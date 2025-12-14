@@ -1,0 +1,11 @@
+{
+  "name": "ngo-impact-tracker",
+  "version": "1.0.0",
+  "description": "NGO Impact Tracking System",
+  "private": true,
+  "scripts": {
+    "dev:frontend": "cd frontend && npm run dev",
+    "build:frontend": "cd frontend && npm run build"
+  }
+}
+
