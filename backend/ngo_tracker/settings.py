@@ -75,25 +75,40 @@ WSGI_APPLICATION = 'ngo_tracker.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME', 'ngo_tracker'),
-        'USER': os.getenv('DB_USER', 'postgres'),
-        'PASSWORD': os.getenv('DB_PASSWORD', 'postgres'),
-        'HOST': os.getenv('DB_HOST', 'localhost'),
-        'PORT': os.getenv('DB_PORT', '5432'),
-    }
-}
+# Check if we're using SQLite (for local dev)
+USE_SQLITE = os.getenv('USE_SQLITE', 'False') == 'True'
 
-# Fallback to SQLite for easier local development
-if os.getenv('USE_SQLITE', 'False') == 'True':
+if USE_SQLITE:
+    # Fallback to SQLite for easier local development
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
+else:
+    # PostgreSQL configuration for production
+    # Render provides DATABASE_URL, or use individual variables
+    import dj_database_url
+    
+    # Try to use DATABASE_URL first (Render provides this)
+    database_url = os.getenv('DATABASE_URL')
+    if database_url:
+        DATABASES = {
+            'default': dj_database_url.parse(database_url)
+        }
+    else:
+        # Fall back to individual environment variables
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.postgresql',
+                'NAME': os.getenv('DB_NAME', 'ngo_tracker'),
+                'USER': os.getenv('DB_USER', 'postgres'),
+                'PASSWORD': os.getenv('DB_PASSWORD', 'postgres'),
+                'HOST': os.getenv('DB_HOST', 'localhost'),
+                'PORT': os.getenv('DB_PORT', '5432'),
+            }
+        }
 
 
 # Password validation
