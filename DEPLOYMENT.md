@@ -4,16 +4,23 @@ This guide will help you deploy the NGO Impact Tracker to production.
 
 ## Recommended Deployment Platforms
 
-### Frontend (Next.js) - Vercel (Recommended)
+### 🚀 Railway (Easiest - Recommended)
+- **One platform for both backend and frontend**
+- **Automatic detection and configuration**
+- **$5 free credit per month**
+- **Easiest database setup**
+- **URL**: https://railway.app
+- **See**: [RAILWAY_DEPLOYMENT.md](./RAILWAY_DEPLOYMENT.md) for detailed guide
+
+### Frontend (Next.js) - Vercel (Alternative)
 - **Free tier available**
 - **Optimized for Next.js**
 - **Automatic deployments from GitHub**
 - **URL**: https://vercel.com
 
-### Backend (Django) - Render or Railway
+### Backend (Django) - Render (Alternative)
 - **Render**: https://render.com (Free tier available)
-- **Railway**: https://railway.app (Free tier available)
-- Both support PostgreSQL and Redis
+- **See**: [RENDER_SETUP.md](./RENDER_SETUP.md) for troubleshooting
 
 ## Step-by-Step Deployment
 
